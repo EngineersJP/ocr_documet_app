@@ -4,7 +4,11 @@
 <p>Hello, {{ name }}さん！</p>
 <!-- POSTのときの処理 -->
 {%- if flag %}
-<div>{{ result }}</div>
+<div>
+    <p>【推測結果】========</p>
+    <div>{{ result }}</div>
+    <p>==================</p>
+</div>
 {%- endif %}
 <p>OCRで文字列を取得する画像ファイルを指定してください。</p>
 <form action="/" method="POST" enctype="multipart/form-data">
