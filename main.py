@@ -13,6 +13,7 @@ def ocr_jpn(filepath):
     print("読み込み画像: {}".format(filename))
     image = Image.open(filepath)
     result = pytesseract.image_to_string(image, lang='jpn')  # print ocr text from image
+    result = result.replace(' ', '')
     return image, result
 
 
