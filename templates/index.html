@@ -2,8 +2,17 @@
 {% block content %}
 <h2>OCR for Documents</h2>
 <p>Hello, {{ name }}さん！</p>
+<!-- POSTのときの処理 -->
+{%- if flag %}
+<div>{{ result }}</div>
+{%- endif %}
 <p>OCRで文字列を取得する画像ファイルを指定してください。</p>
-<form action="result.html" method="POST">
-    <input type="file" name="document" accept="image/jpeg">
+<form action="/" method="POST" enctype="multipart/form-data">
+    <div>
+        <input type="file" name="image" accept="image/*" required>
+    </div>
+    <div>
+        <input type="submit" value="送信">
+    </div>
 </form>
 {% endblock %}
