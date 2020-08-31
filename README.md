@@ -6,9 +6,17 @@
 macOS Mojave 10.14.6
 Python 3.8.5
 virtualenv 20.0.10
+tesseract 4.1.1
 ```
 # 環境設定
+## データセットの用意
+tesseract-ocrの[tessdata](https://github.com/tesseract-ocr/tessdata)をzipでダウンロードし、`usr⁩/local⁩/Cellar⁩/tesseract⁩/⁨<バージョン数>/⁩`配下に保存してください。  
+*)高精度モデルは[こちら](https://github.com/tesseract-ocr/tessdata_best)から
 ## macOS
+まず、TesseractをHomebrewでインストールします。
+```
+$ brew install tesseract --HEAD
+```
 下記の要領で`virtual env`を設定してください。 
 ```
 $ cd ocr_document_app
