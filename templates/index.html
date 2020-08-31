@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
-<h3>OCR for Documents</h3>
-Hello, {{ name }}さん！
+<h2>OCR for Documents</h2>
+<p>Hello, {{ name }}さん！</p>
+<p>OCRで文字列を取得する画像ファイルを指定してください。</p>
+<form action="result.html" method="POST">
+    <input type="file" name="document" accept="image/jpeg">
+</form>
 {% endblock %}
