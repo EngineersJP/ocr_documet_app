@@ -22,7 +22,7 @@ app = Flask(__name__)
 @app.route('/', methods=['get'])
 def get():
     name = "Engineers"
-    return render_template('index.html', title='flask test', name=name, flag=False)
+    return render_template('index.html', title='OCR for docs', name=name, flag=False)
 
 @app.route('/', methods=['POST'])
 def post():
