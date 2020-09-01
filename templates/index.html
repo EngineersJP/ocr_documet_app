@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>OCR for Documents</h2>
+<p>Hello, {{ name }}さん！</p>
+<!-- POSTのときの処理 -->
+{%- if flag %}
+<div class="result-container">
+    <div class="result">
+        <p class="result-line">【送信画像】========</p>
+        <img src="{{ image_b64data }}" class="result-image" alt="original image">
+        <p class="result-line">==================</p>
+    </div>
+    <div class="result">
+        <p class="result-line">【推測結果】========</p>
+        <div class="result-text">{{ result }}</div>
+        <p class="result-line">==================</p>
+    </div>
+    
+</div>
+{%- endif %}
+<p>OCRで文字列を取得する画像ファイルを指定してください。</p>
+<form action="/" method="POST" enctype="multipart/form-data">
+    <div>
+        <input type="file" name="image" accept="image/*" required>
+    </div>
+    <div>
+        <input type="submit" value="解析">
+    </div>
+</form>
+{% endblock %}

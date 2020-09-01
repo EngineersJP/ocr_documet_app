@@ -1,0 +1,20 @@
+.result{
+  max-width: 47vw;
+  margin: auto;
+  display: inline-block;
+  font-size: 16px;
+}
+.result-container{
+  margin: auto;
+  width: 94vw;
+  font-size: 0;
+}
+.result-image{
+  width: 47vw;
+}
+.result-line{
+  color: #999;
+}
+.result-text{
+  font-size: 20px;
+}
