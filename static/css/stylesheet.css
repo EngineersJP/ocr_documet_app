@@ -18,3 +18,13 @@
 .result-text{
   font-size: 20px;
 }
+p.header-logo {
+	padding: 6px 0;
+}
+p.header-logo a {
+	display: block;
+	width: 300px;
+	height: 72px;
+	font-size: 0;
+	background: url(https://engineers.co.jp/wp/wp-content/uploads/2020/08/ENGINEERS-logo6.gif) left top/300px auto no-repeat;
+}

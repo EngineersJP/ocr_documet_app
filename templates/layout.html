@@ -7,8 +7,20 @@
     <title>{{ title }}</title>
   </head>
   <body>
-    {% block content %}
-    <!-- main contents -->
-    {% endblock %}
+    <header>
+      <div>
+        <p class="header-logo">
+          Powered by
+          <a href="https://engineers.co.jp">
+            株式会社エンジニアズ
+          </a>
+        </p>
+      </div>
+    </header>
+    <div>
+      {% block content %}
+      <!-- main contents -->
+      {% endblock %}
+    </div>
   </body>
 </html>
