@@ -25,7 +25,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['get'])
 def get():
-    name = "Engineers"
+    name = "ゲスト"
     return render_template(
         'index.html', title='OCR Document App',
         name=name, flag=False
@@ -34,7 +34,7 @@ def get():
 
 @app.route('/', methods=['POST'])
 def post():
-    name = "Engineers"
+    name = "ゲスト"
 
     if request.method == 'POST':
         f = request.files.get('image')
@@ -63,7 +63,7 @@ def post():
 
 @app.route('/test')
 def good():
-    name = "test"
+    name = "有効"
     return name
 
 @app.route('/txt_download', methods=['POST'])
