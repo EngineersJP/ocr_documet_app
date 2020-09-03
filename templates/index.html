@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1>OCR for Documents</h1>
+<h2>OCR for Documents</h2>
 <p>Hello, {{ name }}さん！</p>
 <!-- POSTのときの処理 -->
 {%- if flag %}
@@ -12,7 +12,14 @@
     </div>
     <div class="result">
         <p class="result-line">【推測結果】========</p>
-        <div class="result-text">{{ result }}</div>
+        <!-- <div class="result-text">{{ result }}</div> -->
+        <form action="{{ url_for('txt_download') }}" method="POST">
+            <input type="hidden" name="filename_without_ext" value="{{ filename_without_ext }}">
+            <textarea name="result">
+                {{ result }}
+            </textarea>
+             <input type="submit" value="読み取り結果をダウンロード">
+        </form>
         <p class="result-line">==================</p>
     </div>
     

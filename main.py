@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 from werkzeug.utils import secure_filename
 
 import pytesseract
@@ -27,7 +27,7 @@ app = Flask(__name__)
 def get():
     name = "Engineers"
     return render_template(
-        'index.html', title='OCR for docs',
+        'index.html', title='OCR Document App',
         name=name, flag=False
     )
 
@@ -38,6 +38,8 @@ def post():
 
     if request.method == 'POST':
         f = request.files.get('image')
+        # filename = f.filename
+        filename_without_ext = os.path.splitext(os.path.basename(f.filename))[0]
         filepath = 'src/img/' + secure_filename(f.filename)
         f.save(filepath)
 
@@ -54,7 +56,8 @@ def post():
         result == "ファイルが正しく選択されませんでした。"
     return render_template(
         'index.html', title='OCR Document App', name=name,
-        image_b64data=image_b64data, result=result, flag=True
+        image_b64data=image_b64data,
+        filename_without_ext=filename_without_ext, result=result, flag=True
     )
 
 
@@ -63,6 +66,15 @@ def good():
     name = "test"
     return name
 
+@app.route('/txt_download', methods=['POST'])
+def txt_download():
+    result = request.form['result']
+    filename_without_ext = request.form['filename_without_ext']
+    return Response(
+        result,
+        mimetype='text/txt',
+        headers={"Content-disposition":
+                 "attachment; filename={}_result.txt".format(filename_without_ext)})
 
 if __name__ == "__main__":
     app.run(debug=True)
