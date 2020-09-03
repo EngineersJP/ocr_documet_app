@@ -53,7 +53,7 @@ def post():
     else:
         result == "ファイルが正しく選択されませんでした。"
     return render_template(
-        'index.html', title='flask test', name=name,
+        'index.html', title='OCR Document App', name=name,
         image_b64data=image_b64data, result=result, flag=True
     )
 
