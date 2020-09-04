@@ -15,7 +15,10 @@ def ocr_jpn(filepath):
     print("読み込み画像: {}".format(filename))
     image = Image.open(filepath)
     # get ocr text from image
-    result = pytesseract.image_to_string(image, lang='jpn')
+    result = pytesseract.image_to_string(image, lang='jpn', config='--psm 1')
+    osd_info = pytesseract.image_to_osd(image, output_type=pytesseract.Output.DICT)
+    orientation = osd_info['orientation']
+    print("Orientation: {}".format(orientation))
     result = result.replace(' ', '')
     return image, result
 
