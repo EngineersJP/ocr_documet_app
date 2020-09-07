@@ -26,8 +26,11 @@ class engineers_ocr(object):
         img_edges = cv2.Canny(img_gray, 100, 100, apertureSize = 3)
         lines = cv2.HoughLinesP(img_edges, 1, math.pi / 180.0, 100, minLineLength = 100, maxLineGap = 5)
 
-        for x1, y1, x2, y2 in lines[0]:
-            minor_degree = float(math.degrees(math.atan2(y2 - y1, x2 - x1)))
+        try:
+            for x1, y1, x2, y2 in lines[0]:
+                minor_degree = float(math.degrees(math.atan2(y2 - y1, x2 - x1)))
+        except TypeError:
+            minor_degree = 0
         minor_degree = minor_degree % 90
         print("Minor Degree: {}".format(minor_degree))
 
