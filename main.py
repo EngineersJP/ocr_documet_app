@@ -69,7 +69,7 @@ class engineers_ocr(object):
         if minor_degree:
             self.fix_dpi_and_rotation(image, filename, minor_degree, output_filepath)
         else:
-            image.save(output_filepath)
+            image.convert("RGB").save(output_filepath)
 
         image_output = Image.open(output_filepath)
 
