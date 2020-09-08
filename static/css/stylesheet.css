@@ -50,5 +50,6 @@ footer {
   top: auto;
   bottom: auto;
   text-align: center;
-	z-index: 20000;
+  z-index: 20000;
+  padding-top: calc(50vh - 120px - 135px);
 }
