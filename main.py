@@ -147,7 +147,7 @@ def txt_download():
                  "attachment; filename={}_result.txt".format(filename_without_ext)})
 
 @app.errorhandler(500)
-def internal_server_error.html(error):
+def internal_server_error(error):
     return render_template('internal_server_error.html'), 500
 
 if __name__ == "__main__":
