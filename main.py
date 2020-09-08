@@ -148,7 +148,11 @@ def txt_download():
 
 @app.errorhandler(500)
 def internal_server_error(error):
-    return render_template('internal_server_error.html'), 500
+    return render_template('internal_server_error.html' code=500), 500
+
+@app.errorhandler(503)
+def internal_server_error(error):
+    return render_template('internal_server_error.html' code=503), 503
 
 if __name__ == "__main__":
     app.run(debug=True)
