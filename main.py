@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, Response, jsonify
 from werkzeug.utils import secure_filename
 
 import pytesseract
@@ -13,11 +13,18 @@ import math
 import cv2
 
 
+available_ext = ['.png', '.jpeg', '.jpg']
+
 class engineers_ocr(object):
     
     def __init__(self):
         
         print("Start OCR")
+
+    def get_file_info(self, filename):
+        filename_without_ext, ext = os.path.splitext(filename)
+        filepath = 'src/img/' + filename
+        return filename_without_ext, ext, filepath
 
     def get_rotation_minor_degree(self, filepath):
         # Use HoughLinesP to detect the lines and calculate the degree.
@@ -56,6 +63,14 @@ class engineers_ocr(object):
         image_pasted = back_ground.convert("RGB")
         
         image_pasted.save(output_filepath)
+    
+    def encode_image_to_bin(self, image):
+        buf = BytesIO()
+        image.save(buf, format="png")
+        image_b64str = base64.b64encode(buf.getvalue()).decode("utf-8")
+        image_b64data = "data:image/png;base64,{}".format(image_b64str)
+
+        return image_b64data, image_b64str
 
     def main(self, filepath):
         filename = os.path.basename(filepath)  # xxx.jpg
@@ -107,20 +122,16 @@ def post():
 
     if request.method == 'POST':
         f = request.files.get('image')
-        # filename = f.filename
-        filename_without_ext = os.path.splitext(os.path.basename(f.filename))[0]
-        filepath = 'src/img/' + secure_filename(f.filename)
-        f.save(filepath)
+        filename = secure_filename(f.filename)
 
         ocr_jpn = engineers_ocr()
+        filename_without_ext, ext, filepath = ocr_jpn.get_file_info(filename)
+        f.save(filepath)
+        
         image, result = ocr_jpn.main(filepath)
         os.remove(filepath)
 
-        # Handle image as binary data
-        buf = BytesIO()
-        image.save(buf, format="png")
-        image_b64str = base64.b64encode(buf.getvalue()).decode("utf-8")
-        image_b64data = "data:image/png;base64,{}".format(image_b64str)
+        image_b64data = ocr_jpn.encode_image_to_bin(image)[0]
 
     else:
         result == "ファイルが正しく選択されませんでした。"
@@ -147,6 +158,35 @@ def txt_download():
         mimetype='text/txt',
         headers={"Content-disposition":
                  "attachment; filename={}_result.txt".format(filename_without_ext)})
+
+@app.route('/api', methods=['POST'])
+def api():
+    ocr_jpn = engineers_ocr()
+    if 'image' in request.files:
+        f = request.files.get('image')
+        filename = secure_filename(f.filename)
+
+        filename_without_ext, ext, filepath = ocr_jpn.get_file_info(filename)
+        f.save(filepath)
+
+        image, result = ocr_jpn.main(filepath)
+        os.remove(filepath)
+
+        image_b64str = ocr_jpn.encode_image_to_bin(image)[1]
+
+    else:
+        image = Image.open('static/img/engineers_ocr_logo.png')
+        image_b64str = ocr_jpn.encode_image_to_bin(image)[1]
+        result = "エラー: 対応するファイルを選択してください。"
+
+    api_results = {
+        'image': image_b64str,
+        'result': result
+    }
+
+    return jsonify(api_results)
+
+        
 
 @app.errorhandler(500)
 def internal_server_error(error):
