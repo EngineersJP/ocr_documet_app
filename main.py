@@ -139,7 +139,9 @@ def good():
 @app.route('/txt_download', methods=['POST'])
 def txt_download():
     result = request.form['result']
+    result = result.encode("utf-8")
     filename_without_ext = request.form['filename_without_ext']
+    filename_without_ext = filename_without_ext.encode("utf-8").decode('iso-8859-1')
     return Response(
         result,
         mimetype='text/txt',
