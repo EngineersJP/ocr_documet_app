@@ -159,6 +159,10 @@ def txt_download():
         headers={"Content-disposition":
                  "attachment; filename={}_result.txt".format(filename_without_ext)})
 
+@app.route('/company', methods=['GET'])
+def company():
+    return render_template('company.html', title='COMPANY')
+
 @app.route('/api', methods=['POST'])
 def api():
     ocr_jpn = engineers_ocr()

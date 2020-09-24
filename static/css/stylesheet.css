@@ -209,3 +209,34 @@ p.header-logo a {
   }
 
 }
+/* header end */
+
+/* main contents */
+h2 {
+  text-align: center;
+}
+/* -- company --*/
+iframe {
+  display: block;
+  max-width: 90vw;
+  margin: auto;
+}
+table {
+  margin: auto;
+  text-align: left;
+}
+.table-1 {
+  height: 150px;
+}
+.table-2 {
+  height: 800px;
+}
+.table-3 {
+  height: 200px;
+}
+th {
+  font-weight: normal;
+}
+.table-head {
+  font-weight: bold;
+}
