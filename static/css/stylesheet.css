@@ -25,7 +25,7 @@
 }
 .main-content {
   height: 100%;
-  min-height: calc(100vh - 199px);
+  min-height: calc(100vh - 212px);
 }
 textarea {
   width: 47vw;
@@ -239,4 +239,8 @@ th {
 }
 .table-head {
   font-weight: bold;
+}
+/* -- contact --*/
+.contact-message {
+  text-align: center;
 }
