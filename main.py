@@ -111,7 +111,7 @@ app = Flask(__name__)
 def get():
     name = "ゲスト"
     return render_template(
-        'index.html', title='OCR Document App',
+        'index.html', title='TOP',
         name=name, flag=False
     )
 
@@ -136,7 +136,7 @@ def post():
     else:
         result == "ファイルが正しく選択されませんでした。"
     return render_template(
-        'index.html', title='OCR Document App', name=name,
+        'index.html', title='TOP', name=name,
         image_b64data=image_b64data,
         filename_without_ext=filename_without_ext, result=result, flag=True
     )
@@ -162,6 +162,10 @@ def txt_download():
 @app.route('/company', methods=['GET'])
 def company():
     return render_template('company.html', title='COMPANY')
+
+@app.route('/contact', methods=['GET'])
+def contact():
+    return render_template('contact.html', title='CONTACT')
 
 @app.route('/api', methods=['POST'])
 def api():
