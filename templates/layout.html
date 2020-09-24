@@ -4,19 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stylesheet.css') }}">
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="static/js/script.js"></script>
     <script data-ad-client="ca-pub-3686794465228977" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <title>{{ title }}</title>
   </head>
   <body>
     <header>
-      <div>
+      <h1>
         <p class="header-logo">
-          <a href="https://engineers.co.jp">
-            株式会社エンジニアズ
-          </a>
+            <a href="/">ENGINEERS OCR</a>
         </p>
+      </h1>
+      <nav class="pc-nav">
+        <ul>
+            <li><a href="company.html" class="header-pc-nav">COMPANY</a></li>
+            <li><a href="contact.html" class="header-pc-nav">CONTACT</a></li>
+            <li><a href="https://engineers.co.jp" class="header-pc-nav">ENGINEERS.co.jp</a></li>
+        </ul>
+      </nav>
+      <nav class="sp-nav">
+        <ul>
+           <li><a href="company.html" class="header-sp-nav">COMPANY</a></li>
+           <li><a href="contact.html" class="header-sp-nav">CONTACT</a></li>
+           <li><a href="https://engineers.co.jp" class="header-sp-nav">ENGINEERS.co.jp</a></li>
+           <li class="close"><span>閉じる</span></li>
+        </ul>
+      </nav>
+      <div id="hamburger">
+          <span></span>
       </div>
     </header>
     <div class="loading">
@@ -32,5 +46,7 @@
     <footer>
       <p>&copy; All rights reserved by 2020 Engineers.co.jp</p>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="static/js/script.js"></script>
   </body>
 </html>
