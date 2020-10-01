@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% block content %}
-<p>Hello, {{ name }}さん！</p>
 <!-- POSTのときの処理 -->
 {%- if flag %}
 <div class="result-container">
@@ -23,14 +22,33 @@
     </div>
     
 </div>
+{%- else %}
+<div class="app-discription">
+    <h2 class="app-title">紙書類をデータに。</h2>
+    <div>
+        <p class="sample-image sample-discription">
+            <img src="../static/img/sample_img.JPG" alt="sample image">
+        </p>
+        <div class="arrow-container sample-discription">
+            <div class="arrow"></div>
+        </div>
+        <p class="sample-image-result sample-discription">
+            <img src="../static/img/sample_img_res.JPG" alt="sample image result">
+        </p>
+    </div>
+    <p class="discription">傾いた写真からでも文字を検出。</p>
+    <p class="sub-discription">読み取り結果をテキストファイル(.txt)でダウンロードいただけます。</p>
+</div>
 {%- endif %}
-<p>OCRで文字列を取得する画像ファイルを指定してください。</p>
-<form action="/" method="POST" enctype="multipart/form-data">
-    <div>
-        <input type="file" name="image" accept="image/*" required>
-    </div>
-    <div>
-        <input type="submit" value="解析" onclick="loading();">
-    </div>
-</form>
+<div class="submit-form">
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <p class="submit-button">OCRで文字列を取得する画像ファイルを指定してください。</p>
+        <div class="submit-button">
+            <input type="file" name="image" accept="image/*" required>
+        </div>
+        <div>
+            <input type="submit" value="OCRで文字を検出" onclick="loading();" class="btn btn--red btn--radius btn--cubic">
+        </div>
+    </form>
+</div>
 {% endblock %}
