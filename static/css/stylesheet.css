@@ -244,3 +244,99 @@ th {
 .contact-message {
   text-align: center;
 }
+
+/* -- app discription --*/
+.app-discription {
+  margin: auto 5vw;
+}
+h2.app-title {
+  font-size: 4.5vw;
+  margin: 0.5vw auto;
+}
+.sample-discription {
+  display: inline-block;
+}
+p.sample-discription {
+  margin: 0;
+}
+p.sample-image img {
+  margin-right: 2vw;
+  width: 28vw;
+}
+p.sample-image-result img {
+  margin-left: 2vw;
+  width: 38vw;
+}
+.arrow-container {
+  margin: auto calc(1vw + 60px) auto 1vw;
+}
+.arrow {
+  display:inline-block;
+  height:40px;
+  width:80px;
+  background-color:#549EE3;
+  position:relative;
+  top:-8vw;
+}
+.arrow:before {
+  position:absolute;
+  content:"";
+  width:0;
+  height:0;
+  border:60px solid transparent;
+  border-left:60px solid #549EE3;
+  left:80px;
+  top:-37px;
+}
+p.discription {
+  text-align: center;
+  font-size: 3vw;
+  margin: 0.5vw auto;
+}
+p.sub-discription {
+  text-align: center;
+  font-size: 18px;
+  margin: 0;
+}
+.submit-form {
+  text-align: center;
+}
+.submit-button {
+  display: inline-block;
+}
+.btn,
+input.btn,
+button.btn {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  background-color: #E0F8C0;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+input.btn--red.btn--cubic {
+  border-bottom: 5px solid;
+}
+
+input.btn--red.btn--cubic:hover {
+  margin-top: 3px;
+  border-bottom: 2px solid;
+}
+
+input.btn--radius {
+  border-radius: 100vh;
+}

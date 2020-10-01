@@ -109,17 +109,14 @@ app = Flask(__name__)
 
 @app.route('/', methods=['get'])
 def get():
-    name = "ゲスト"
     return render_template(
         'index.html', title='TOP',
-        name=name, flag=False
+        flag=False
     )
 
 
 @app.route('/', methods=['POST'])
 def post():
-    name = "ゲスト"
-
     if request.method == 'POST':
         f = request.files.get('image')
         filename = secure_filename(f.filename)
@@ -136,7 +133,7 @@ def post():
     else:
         result == "ファイルが正しく選択されませんでした。"
     return render_template(
-        'index.html', title='TOP', name=name,
+        'index.html', title='TOP',
         image_b64data=image_b64data,
         filename_without_ext=filename_without_ext, result=result, flag=True
     )
